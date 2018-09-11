@@ -1,7 +1,15 @@
 [
   {
-    "_id": 1,
-    "title": "Record Title",
+    "_id": "1",
+    "key": "1",
+    "title": "Z Record Title",
+    "time": "2017-01-01T00:00:00.000Z",
+    "position": [ 400, 50 ]
+  },
+  {
+    "_id": "2",
+    "key": "2",
+    "title": "A Record Title",
     "time": "2018-01-01T00:00:00.000Z",
     "position": [ 40, 5 ]
   }
