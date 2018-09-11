@@ -1,0 +1,41 @@
+{
+  "name": "CParkChallenge",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "babel-eslint": "^9.0.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "esdoc": "^0.5.2",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-react-plugin": "^1.0.1",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-import-resolver-webpack": "^0.10.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "jest-react-native": "^18.0.0",
+    "node-sass": "^4.9.3",
+    "react-native-sass-transformer": "^1.2.3",
+    "react-test-renderer": "16.3.1"
+  },
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest",
+    "lint": "eslint ./src/**/*.js",
+    "doc": "./node_modules/.bin/esdoc"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "expo": "^29.0.0",
+    "react": "16.3.1",
+    "react-native": "~0.55.2"
+  }
+}

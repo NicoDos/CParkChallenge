@@ -1,0 +1,17 @@
+{
+  "name": "CParkChallengeAPI",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4"
+  }
+}
