@@ -32,7 +32,7 @@ Setup git hooks
 chmod +x .git/hooks/pre-commit
 ```
 
-### Server
+### API
 
 move into folder
 
@@ -58,3 +58,10 @@ yarn install
 1. Launch the server with `yarn start`
 2. Visit http://localhost:8080
 
+## Deploying
+
+### API
+
+1. move into folder with `cd ~/CParkChallenge/server`
+2. Build Docker image with `docker build -t cpark-challenge .`
+3. Run a Docker container with the built image
