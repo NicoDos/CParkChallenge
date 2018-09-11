@@ -5,6 +5,8 @@
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "esdoc": "^0.5.2",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-react-plugin": "^1.0.1",
@@ -16,6 +18,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "jest": "^23.6.0",
+    "jest-css-modules": "^1.1.0",
     "jest-react-native": "^18.0.0",
     "node-sass": "^4.9.3",
     "react-native-sass-transformer": "^1.2.3",
@@ -30,12 +33,16 @@
     "doc": "./node_modules/.bin/esdoc"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleNameMapper": {
+      "\\.(sass)$": "<rootDir>/node_modules/jest-css-modules"
+    }
   },
   "dependencies": {
     "axios": "^0.18.0",
     "expo": "^29.0.0",
-    "react": "16.3.1",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-native": "~0.55.2"
   }
 }
