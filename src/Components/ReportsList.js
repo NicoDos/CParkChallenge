@@ -52,7 +52,7 @@ class ReportsList extends React.Component {
       reports.reverse();
     } else {
       this.setState({ sortBy: column });
-      reports.sort((a, b) => a[column] - b[column]);
+      reports.sort((a, b) => a[column] > b[column]);
     }
 
     this.setState({
@@ -85,8 +85,8 @@ class ReportsList extends React.Component {
    */
   renderHeader = () => (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => this.sortList('time')}>
-        <Text style={[styles.button, this.activeClassName('time')]}>Time</Text>
+      <TouchableOpacity onPress={() => this.sortList('dateCreated')}>
+        <Text style={[styles.button, this.activeClassName('dateCreated')]}>Time</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => this.sortList('distance')}>
         <Text style={[styles.button, this.activeClassName('distance')]}>Distance</Text>
