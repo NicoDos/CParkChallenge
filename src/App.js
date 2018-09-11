@@ -1,14 +1,16 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import styles from './App.sass';
 
+import ReportsList from './Components/ReportsList';
+
 /**
- * Hello from the doc!
+ * Main App page component
  */
 const App = () => (
   <View style={styles.container}>
-    <Text>CPark Challenge</Text>
+    <ReportsList />
   </View>
 );
 
