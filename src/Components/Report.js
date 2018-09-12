@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import axios from 'axios';
-
+import getCurrentPosition from '../utils/coordinates';
 import Form from './Form';
 
 import styles from './Report.sass';
@@ -20,6 +20,8 @@ class Report extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      latitude: null,
+      longitude: null,
       form: {
         title: '',
       },
@@ -28,6 +30,20 @@ class Report extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  /**
+    * Get geolocalisation of user
+    * Update value in state
+    */
+  componentDidMount() {
+    getCurrentPosition()
+      .then((position) => {
+        const { latitude, longitude } = position.coords;
+
+        this.setState({ latitude, longitude });
+      })
+      .catch(error => this.setState(error));
   }
 
   /**
@@ -48,9 +64,15 @@ class Report extends React.Component {
     * Send data to API
     */
   handleSubmit() {
+    const { latitude, longitude } = this.state;
     const { form } = this.state;
+    const { title } = form;
+    const data = {
+      title,
+      position: [latitude, longitude],
+    };
 
-    axios.post(`http://${localIP}:8080/report`, form)
+    axios.post(`http://${localIP}:8080/report`, data)
       .then((res) => {
         this.setState({
           formStatus: res.data.msg,
