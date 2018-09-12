@@ -1,0 +1,29 @@
+version: "3.2"
+services:
+  mongo:
+    image: mongo:latest
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_INITDB_DATABASE}
+    networks:
+      - mongo
+    restart: always
+    volumes:
+      - db:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --auth
+  api:
+    image: cpark-challenge-api:latest
+    restart: always
+    networks:
+      - mongo
+    ports:
+      - 8080:8080
+
+volumes:
+  db:
+
+networks:
+  mongo:
