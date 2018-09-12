@@ -60,8 +60,21 @@ yarn install
 
 ## Deploying
 
+### App
+
+Follow deployment process described at https://docs.expo.io/versions/latest/guides/building-standalone-apps.html
+
 ### API
 
 1. move into folder with `cd ~/CParkChallenge/server`
 2. Build Docker image with `docker build -t cpark-challenge-api .`
-3. Run a Docker container with the built image
+3. Run docker-compose file
+
+## Misc
+
+### To Do
+
+1. Replace static local IP on ./src/Components/Reports.js:10 & ./src/Components/ReportsList.js:13
+2. Use environment variable to read either prod or dev database config file at ./server/index.js:5
+3. Add & Improve doc and unt tests
+
