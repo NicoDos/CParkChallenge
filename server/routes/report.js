@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import Report from '../models/report';
+import verifyJWTMW from '../middlewares';
 
 Report.ensureIndexes();
 Report.on('index', (error) => {
@@ -10,6 +11,8 @@ Report.on('index', (error) => {
 
 const router = Router();
 const maxDistanceInMeters = 10000;
+
+router.post('*', verifyJWTMW);
 
 router.get('/report/:lat/:long', (req, res) => {
   const { lat, long } = req.params;
@@ -36,7 +39,7 @@ router.get('/report/:lat/:long', (req, res) => {
         },
       ], (error, reports) => {
         if (error) {
-          return res.status(500).send(error);
+          return res.status(500).json(error);
         }
 
         return res.status(200).json(reports);
@@ -54,12 +57,12 @@ router.post('/report', (req, res) => {
       coordinates: [body.position[0], body.position[1]],
     },
   };
-  const successMsg = { msg: `Successfully added ${JSON.stringify(data)}` };
+  const successMsg = `Successfully added ${JSON.stringify(data)}`;
   const newReport = new Report(data);
 
   newReport.save((error) => {
     if (error) {
-      return res.status(500).send(error);
+      return res.status(500).json(error);
     }
 
     return res.status(200).json(successMsg);

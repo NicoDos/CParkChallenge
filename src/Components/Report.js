@@ -8,6 +8,10 @@ import styles from './Report.sass';
 
 // TODO: Read this from config file
 const localIP = '192.168.1.16';
+const loginDetails = {
+  email: 'nico@cpark.com',
+  password: 'super_secret',
+};
 
 /**
   * Reports list page Component
@@ -26,10 +30,12 @@ class Report extends React.Component {
         title: '',
       },
       formStatus: '',
+      token: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.login = this.login.bind(this);
   }
 
   /**
@@ -37,6 +43,7 @@ class Report extends React.Component {
     * Update value in state
     */
   componentDidMount() {
+    this.login();
     getCurrentPosition()
       .then((position) => {
         const { latitude, longitude } = position.coords;
@@ -44,6 +51,17 @@ class Report extends React.Component {
         this.setState({ latitude, longitude });
       })
       .catch(error => this.setState(error));
+  }
+
+  login() {
+    axios.post(`http://${localIP}:8080/login`, loginDetails)
+      .then((res) => {
+        const { token } = res.data;
+        this.setState({ token });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   /**
@@ -64,10 +82,11 @@ class Report extends React.Component {
     * Send data to API
     */
   handleSubmit() {
-    const { latitude, longitude } = this.state;
+    const { latitude, longitude, token } = this.state;
     const { form } = this.state;
     const { title } = form;
     const data = {
+      token,
       title,
       position: [latitude, longitude],
     };
@@ -75,12 +94,12 @@ class Report extends React.Component {
     axios.post(`http://${localIP}:8080/report`, data)
       .then((res) => {
         this.setState({
-          formStatus: res.data.msg,
+          formStatus: res.data,
         });
       })
       .catch((res) => {
         this.setState({
-          formStatus: res.data.msg,
+          formStatus: res.data,
         });
       });
   }

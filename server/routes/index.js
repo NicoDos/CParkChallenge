@@ -1,3 +1,7 @@
 import report from './report';
+import auth from './auth';
 
-export default report;
+export {
+  auth,
+  report,
+};
