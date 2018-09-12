@@ -32,9 +32,7 @@ Setup git hooks
 chmod +x .git/hooks/pre-commit
 ```
 
-### API
-
-move into folder
+move into server folder
 
 ```
 cd ~/CParkChallenge/server
@@ -55,26 +53,26 @@ yarn install
 
 ### Server
 
+Running local mongodb and express instances:
+
 1. Launch the server with `yarn start`
-2. Visit http://localhost:8080
 
-## Deploying
+OR
 
-### App
+Running express and mongodb in a Docker container:
 
-Follow deployment process described at https://docs.expo.io/versions/latest/guides/building-standalone-apps.html
-
-### API
-
-1. move into folder with `cd ~/CParkChallenge/server`
+1. Move into folder with `cd ~/CParkChallenge/server`
 2. Build Docker image with `docker build -t cpark-challenge-api .`
-3. Run docker-compose file
+3. Run docker-compose file with `docker-compose up`
+4. (App) Set your static local IP on ./src/Components/Reports.js:10 & ./src/Components/ReportsList.js:13
 
 ## Misc
 
 ### To Do
 
-1. Replace static local IP on ./src/Components/Reports.js:10 & ./src/Components/ReportsList.js:13
+1. Remove static local IP on ./src/Components/Reports.js:10 & ./src/Components/ReportsList.js:13
 2. Use environment variable to read either prod or dev database config file at ./server/index.js:5
-3. Add & Improve doc and unt tests
+3. Create a login/signup page
+4. Gitignore .env file
+5. Add & Improve doc and unt tests
 
