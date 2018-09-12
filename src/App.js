@@ -1,17 +1,24 @@
-import React from 'react';
-import { View } from 'react-native';
+import { createBottomTabNavigator } from 'react-navigation';
+
+import Report from './Components/Report';
+import ReportsList from './Components/ReportsList';
 
 import styles from './App.sass';
 
-import ReportsList from './Components/ReportsList';
+const BottomTabNavigatorConfig = {
+  tabBarOptions: {
+    showIcon: false,
+    tabStyle: styles.tab,
+    labelStyle: styles.tabLabel,
+  },
+};
 
 /**
  * Main App page component
  */
-const App = () => (
-  <View style={styles.container}>
-    <ReportsList />
-  </View>
-);
+const App = createBottomTabNavigator({
+  ReportsList: { screen: ReportsList },
+  Report: { screen: Report },
+}, BottomTabNavigatorConfig);
 
 export default App;

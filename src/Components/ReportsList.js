@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View, TouchableOpacity, Text, FlatList,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 import styles from './ReportsList.sass';
@@ -83,16 +84,23 @@ class ReportsList extends React.Component {
   /**
    * Render the list header
    */
-  renderHeader = () => (
-    <View style={styles.header}>
-      <TouchableOpacity onPress={() => this.sortList('dateCreated')}>
-        <Text style={[styles.button, this.activeClassName('dateCreated')]}>Time</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => this.sortList('distance')}>
-        <Text style={[styles.button, this.activeClassName('distance')]}>Distance</Text>
-      </TouchableOpacity>
-    </View>
-  );
+  renderHeader = () => {
+    const { navigation } = this.props;
+
+    return (
+      <View style={styles.listHeader}>
+        <TouchableOpacity onPress={() => this.sortList('dateCreated')}>
+          <Text style={[styles.button, this.activeClassName('dateCreated')]}>Time</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.sortList('distance')}>
+          <Text style={[styles.button, this.activeClassName('distance')]}>Distance</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Report')} style={styles.buttonAdd}>
+          <Text style={[styles.button, styles.buttonAddText]}>+</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   /**
    * Return a style active when accurate
@@ -111,17 +119,32 @@ class ReportsList extends React.Component {
     const { reports, sorted } = this.state;
 
     return (
-      <FlatList
-        style={styles.list}
-        data={reports}
-        extraData={sorted}
-        renderItem={({ item }) => this.renderRow(item)}
-        keyExtractor={(item, index) => index}
-        ItemSeparatorComponent={this.renderSeparator}
-        ListHeaderComponent={this.renderHeader}
-      />
+      <View style={styles.container}>
+        <Text style={styles.header}>Reports list</Text>
+        <FlatList
+          style={styles.list}
+          data={reports}
+          extraData={sorted}
+          renderItem={({ item }) => this.renderRow(item)}
+          keyExtractor={(item, index) => index}
+          ItemSeparatorComponent={this.renderSeparator}
+          ListHeaderComponent={this.renderHeader}
+        />
+      </View>
     );
   }
 }
+
+ReportsList.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }),
+};
+
+ReportsList.defaultProps = {
+  navigation: {
+    navigate: () => {},
+  },
+};
 
 export default ReportsList;

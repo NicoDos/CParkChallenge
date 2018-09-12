@@ -1,15 +1,20 @@
 @import '../styles/variables.sass'
+@import '../styles/typo.sass'
 
 .container
   flex: 1
   background-color: $white
   align-items: center
   justify-content: center
+  padding-top: 30px
+
+.header
+  font-size: 30px
+  margin-bottom: 10px
 
 .list
   height: 50%
   width: 100%
-  margin-top: 50px
 
 .listItem
   padding: 15px 10px
@@ -18,9 +23,9 @@
   height: 1px
   background-color: $grey
 
-.header
+.listHeader
   width: 100%
-  height: 50px
+  min-height: 50px
   background-color: $blue
   display: flex
   flex-direction: row
@@ -29,6 +34,12 @@
   line-height: 50px
   padding: 0 10px
   color: $white
+
+.buttonAdd
+  align-self: flex-end // TODO: Fix this
+
+.buttonAddText
+  font-size: 20px
 
 .active
   font-weight: bold
