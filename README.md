@@ -63,5 +63,5 @@ yarn install
 ### API
 
 1. move into folder with `cd ~/CParkChallenge/server`
-2. Build Docker image with `docker build -t cpark-challenge .`
+2. Build Docker image with `docker build -t cpark-challenge-api .`
 3. Run a Docker container with the built image
