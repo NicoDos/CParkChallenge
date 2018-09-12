@@ -3,11 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@babel/preset-env": "^7.0.0",
+    "babel-cli": "^6.26.0",
     "nodemon": "^1.17.5"
   },
   "main": "./index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "babel-node": "babel-node",
+    "start": "nodemon --exec npm run babel-node -- ./index.js",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "bluebird": "^3.5.2",
@@ -15,5 +19,8 @@
     "express": "^4.16.3",
     "mongodb": "^3.1.4",
     "mongoose": "^5.2.14"
+  },
+  "babel": {
+    "presets": ["@babel/preset-env"]
   }
 }

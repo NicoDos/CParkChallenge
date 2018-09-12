@@ -1,3 +1,3 @@
-const report = require('./report');
+import report from './report';
 
-module.exports = app => report(app);
+export default report;

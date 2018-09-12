@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const reportSchema = mongoose.Schema({
   id: { type: Number, index: true },
@@ -12,4 +12,4 @@ const reportSchema = mongoose.Schema({
 
 reportSchema.index({ position: '2dsphere' });
 
-module.exports = mongoose.model('Report', reportSchema);
+export default mongoose.model('Report', reportSchema);

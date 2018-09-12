@@ -1,15 +1,16 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-const configDB = require('./config/database-dev.js');
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import configDB from './config/database-dev';
+import routes from './routes';
 
 const app = express();
 
+mongoose.Promise = require('bluebird');
+
 mongoose.connect(configDB.url);
 app.use(bodyParser.json());
-
-require('./routes')(app);
+app.use(routes);
 
 app.listen(8080, () => {
   console.log('App listening on port 8080!');
