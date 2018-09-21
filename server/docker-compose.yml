@@ -15,7 +15,7 @@ services:
       - 27017:27017
     command: mongod --auth
   api:
-    image: cpark-challenge-api:latest
+    image: api:latest
     restart: always
     networks:
       - mongo

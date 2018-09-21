@@ -2,7 +2,7 @@ import { Router } from 'express';
 import User from '../models/user';
 import { createJWToken } from '../libs/auth';
 
-const newUser = new User({ email: 'nico@cpark.com', password: 'super_secret' });
+const newUser = new User({ email: 'example@mail.com', password: 'super_secret' });
 newUser.save();
 
 const router = Router();

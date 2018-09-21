@@ -9,7 +9,7 @@ import styles from './Report.sass';
 // TODO: Read this from config file
 const localIP = '192.168.1.16';
 const loginDetails = {
-  email: 'nico@cpark.com',
+  email: 'example@mail.com',
   password: 'super_secret',
 };
 

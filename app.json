@@ -6,6 +6,6 @@
       "transformer": "node_modules/react-native-sass-transformer/index.js"
     }
   },
-  "name": "CParkChallenge",
-  "displayName": "CParkChallenge"
+  "name": "React-Native-app-to-manage-geo-reports",
+  "displayName": "React-Native-app-to-manage-geo-reports"
 }

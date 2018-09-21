@@ -1,4 +1,4 @@
-# CParkChallenge
+# React-Native app to manage geo reports
 
 ## Getting Started
 
@@ -11,13 +11,13 @@ This app requires node and npm/yarn
 clone repo
 
 ```
-git clone git@github.com:NicoDos/CParkChallenge.git
+git clone git@github.com:NicoDos/React-Native-app-to-manage-geo-reports.git
 ```
 
 move into folder
 
 ```
-cd ~/CParkChallenge
+cd ~/React-Native-app-to-manage-geo-reports
 ```
 
 install dependencies
@@ -35,7 +35,7 @@ chmod +x .git/hooks/pre-commit
 move into server folder
 
 ```
-cd ~/CParkChallenge/server
+cd ~/React-Native-app-to-manage-geo-reports/server
 ```
 
 install dependencies
@@ -61,8 +61,8 @@ OR
 
 Running express and mongodb in a Docker container:
 
-1. Move into folder with `cd ~/CParkChallenge/server`
-2. Build Docker image with `docker build -t cpark-challenge-api .`
+1. Move into folder with `cd ~/React-Native-app-to-manage-geo-reports/server`
+2. Build Docker image with `docker build -t api .`
 3. Run docker-compose file with `docker-compose up`
 4. (App) Set your static local IP on ./src/Components/Reports.js:10 & ./src/Components/ReportsList.js:13
 
